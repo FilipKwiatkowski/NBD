@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/fprWZcoxMKgLZjAlMuWxMti9CLjKlwUA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17137>; rel="up"
+Last-Modified: Mon, 13 Jun 2022 15:56:13 GMT
+ETag: "2MtHQXdwGdHugQ0oPj5pYk"
+Date: Mon, 13 Jun 2022 15:53:14 GMT
+Content-Type: application/json
+Content-Length: 67
+
+{"Nazwa":"PJC", "trudnosc":3, "zdawalnosc":0.40, "obieralny":false}

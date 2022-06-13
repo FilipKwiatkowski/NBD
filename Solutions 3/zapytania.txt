@@ -1,0 +1,100 @@
+##### 1 #####
+
+MATCH (n:Movie) RETURN n
+
+##### 1 #####
+
+##### 2 #####
+
+MATCH (n:Person) - [:ACTED_IN]-> (m)
+WHERE n.name = "Hugo Weaving" 
+RETURN n,m
+
+##### 2 #####
+
+##### 3 #####
+
+MATCH (n:Person) - [:ACTED_IN] - (movies:Movie)
+WHERE n.name = "Hugo Weaving"
+WITH  movies AS m
+MATCH (d:Person) - [:DIRECTED] - (m)
+RETURN d,m
+
+##### 3 #####
+
+##### 4 #####
+
+MATCH (n:Person) - [:ACTED_IN] - (movies:Movie)
+WHERE n.name = "Hugo Weaving"
+WITH  movies AS m
+MATCH (a:Person) - [:ACTED_IN] - (m)
+RETURN a,m
+
+##### 4 #####
+
+##### 5 #####
+
+MATCH (people:Person) - [:ACTED_IN] - (m:Movie)
+WHERE m.title = "The Matrix"
+WITH people AS p
+MATCH (p) - [:ACTED_IN] - (movies:Movie)
+RETURN p, movies
+
+##### 5 #####
+
+##### 6 #####
+
+MATCH (p:Person) - [r:ACTED_IN] -> (m)
+WITH p, count(r) AS number
+WHERE number > 1
+RETURN p, number
+
+##### 6 #####
+
+##### 7 #####
+
+MATCH (p:Person)-[:WROTE]->(m) 
+WHERE (p)-[:DIRECTED]->(m)
+RETURN p, m
+
+##### 7 #####
+
+##### 8 #####
+
+MATCH (p1:Person)-[:ACTED_IN]->(m)<-[:ACTED_IN]-(p2:Person) 
+WHERE p1.name='Keanu Reeves'AND p2.name = 'Hugo Weaving'
+RETURN m
+
+##### 8 #####
+
+##### 9 #####
+
+CREATE (Johnston: Person {name: 'Joe Johnson', born: 1950})-[:DIRECTED]->(CA:Movie {title:'Captain America: The First Avenger', tagline:'When patriots become heroes', released:2011}),
+(Markus:Person {name:'Christopher Markus', born:1973})-[:WROTE]->(CA),
+(McFeely:Person {name:'Stephen McFeely', born:1973})-[:WROTE]->(CA),
+(Simon:Person {name:'Joe Simon', born:1913})-[:WROTE]->(CA),
+(Kirby:Person {name:'Jack Kirby', born:1917})-[:WROTE]->(CA),
+(Evans:Person {name:'Chris Evans', born:1983})-[:ACTED_IN {roles:['Captain America', 'Steve Rogers']}]->(CA),
+(Atwell:Person {name:'Hayley Atwell', born:1982})-[:ACTED_IN {roles:['Peggy Carter']}]->(CA),
+(Stan:Person {name:'Sebastian Stan', born:1983})-[:ACTED_IN {roles:['James Buchanan Barnes']}]->(CA),
+(LeeJones:Person {name:'Tommy Lee Jones', born:1946})-[:ACTED_IN {roles:['Colonel Chester Phillips']}]->(CA),
+(Weaving:Person {name:'Hugo Weaving', born:1960})-[:ACTED_IN {roles:['Johann Schmidt', 'Red Skull']}]->(CA),
+(Cooper:Person {name:'Dominic Cooper', born:1978})-[:ACTED_IN {roles:['Howard Stark']}]->(CA),
+(Armitage:Person {name:'Richard Armitage', born:1971})-[:ACTED_IN {roles:['Heinz Kruger']}]->(CA),
+(Tucci:Person {name:'Stanley Tucci', born:1960})-[:ACTED_IN {roles:['Dr. Abraham Erskine']}]->(CA),
+(Jackson:Person {name:'Samuel L. Jackson', born:1948})-[:ACTED_IN {roles:['Nick Fury']}]->(CA),
+(Jones:Person {name:'Toby Jones', born:1966})-[:ACTED_IN {roles:['Dr. Arnim Zola']}]->(CA),
+(McDonough:Person {name:'Neal McDonough', born:1966})-[:ACTED_IN {roles:['Timothy Dugan']}]->(CA),
+(Luke:Person {name:'Derek Luke', born:1974})-[:ACTED_IN {roles:['Gabe Jones']}]->(CA),
+(Choi:Person {name:'Kenneth Choi', born:1971})-[:ACTED_IN {roles:['Jim Morita']}]->(CA),
+(Feild:Person {name:'JJ Feild', born:1978})-[:ACTED_IN {roles:['James Montgomery Falsworth']}]->(CA),
+(Shrapnel:Person {name:'Lex Shrapnel', born:1979})-[:ACTED_IN {roles:['Gilmore Hodge']}]->(CA),
+(Brandon:Person {name:'Michael Brandon', born:1945})-[:ACTED_IN {roles:['Senator Brandt']}]->(CA),
+(Sherman:Person {name:'Martin Sherman', born:1938})-[:ACTED_IN {roles:['Brandt Aide']}]->(CA),
+(Dormer:Person {name:'Natalie Dormer', born:1982})-[:ACTED_IN {roles:['Pvt. Lorraine']}]->(CA),
+(Hope:Person {name:'William Hope', born:1955})-[:ACTED_IN {roles:['SHIELD Lieutenant']}]->(CA),
+(Pinnock:Person {name:'Nicholas Pinnock', born:1973})-[:ACTED_IN {roles:['SHIELD Tech']}]->(CA)
+
+MATCH (person)-[relation]-(movie:Movie {title: "Captain America: The First Avenger"}) RETURN person, Type(relation), relation
+
+##### 9 #####

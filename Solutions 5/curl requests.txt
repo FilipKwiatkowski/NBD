@@ -1,0 +1,67 @@
+##### 1 #####
+
+curl -i -X PUT -H "Content-Type: application/json" -d '{"Nazwa":"PPJ", "trudnosc":2, "zdawalnosc":0.40, "obieralny":false}' http://127.0.0.1:8098/buckets/s17137/keys/Z1 > wynik1a
+
+curl -i -X PUT -H "Content-Type: application/json" -d '{"Nazwa":"PJC", "trudnosc":3, "zdawalnosc":0.40, "obieralny":false}' http://127.0.0.1:8098/buckets/s17137/keys/Z2 > wynik1b
+
+curl -i -X PUT -H "Content-Type: application/json" -d '{"Nazwa":"GUI", "trudnosc":2, "zdawalnosc":0.55, "obieralny":false}' http://127.0.0.1:8098/buckets/s17137/keys/Z3 > wynik1c
+
+curl -i -X PUT -H "Content-Type: application/json" -d '{"Nazwa":"UTP", "trudnosc":1, "zdawalnosc":0.80, "obieralny":false}' http://127.0.0.1:8098/buckets/s17137/keys/Z4 > wynik1d
+
+curl -i -X PUT -H "Content-Type: application/json" -d '{"Nazwa":"TPO", "trudnosc":2, "zdawalnosc":0.70, "obieralny":true }' http://127.0.0.1:8098/buckets/s17137/keys/Z5 > wynik1e
+
+##### 1 #####
+
+##### 2 #####
+
+curl -i http://127.0.0.1:8098/buckets/s17137/keys/Z2 > wynik2
+
+##### 2 #####
+
+##### 3 #####
+
+curl -i -X PUT -H "Content-Type: application/json" -d '{"Nazwa":"GUI", "trudnosc":2, "zdawalnosc":0.55, "obieralny":false, "priorytet":"niski"}' http://127.0.0.1:8098/buckets/s17137/keys/Z3 > wynik3
+
+##### 3 #####
+
+##### 4 #####
+
+curl -i -X PUT -H "Content-Type: application/json" -d '{"Nazwa":"GUI", "zdawalnosc":0.55, "obieralny":false, "priorytet":"niski"}' http://127.0.0.1:8098/buckets/s17137/keys/Z3 > wynik4
+
+##### 4 #####
+
+##### 5 #####
+
+curl -i -X PUT -H "Content-Type: application/json" -d '{"Nazwa":"TPO", "trudnosc":999, "zdawalnosc":0.70, "obieralny":true }' http://127.0.0.1:8098/buckets/s17137/keys/Z5 > wynik5
+
+##### 5 #####
+
+##### 6 #####
+
+curl -i -X DELETE http://127.0.0.1:8098/buckets/s17137/keys/Z1 > wynik6
+
+##### 6 #####
+
+##### 7 #####
+
+curl -i http://127.0.0.1:8098/buckets/s17137/keys/PIETIAKRUL > wynik7
+
+##### 7 #####
+
+##### 8 #####
+
+curl -i -X POST -H "Content-Type: application/json" -d '{"Coooooo":"ileeee?"}' http://127.0.0.1:8098/buckets/s17137/keys > wynik8
+
+##### 8 #####
+
+##### 9 #####
+
+curl -i http://127.0.0.1:8098/buckets/s17137/keys?keys=true > wynik9a
+
+##### 9 #####
+
+##### 10 #####
+
+curl -i -X DELETE http://127.0.0.1:8098/buckets/s17137/keys/328hdsHDSYGD83RGSHD72YDnxd9 > wynik10
+
+##### 10 #####
