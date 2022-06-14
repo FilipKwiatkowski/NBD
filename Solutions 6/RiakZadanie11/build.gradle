@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'pl.edu.pja.s12764.nbd'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.5'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
+
+    compile group: 'com.basho.riak', name: 'riak-client', version: '2.1.1'
+
+}
